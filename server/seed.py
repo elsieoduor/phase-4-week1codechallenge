@@ -1,6 +1,8 @@
 from app import app, db, Restaurant, RestaurantPizza, Pizza
 def create_sample_data():
-    with app.app_context():
+     with app.app_context():
+        Pizza.query.delete()
+        Restaurant.query.delete()
         db.create_all()
 
         restaurant1 = Restaurant(name="Dominoes", address="Embakasi")
