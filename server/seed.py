@@ -1,4 +1,5 @@
-from app import app, db, Restaurant, RestaurantPizza, Pizza
+from app import app
+from models import db, Restaurant, RestaurantPizza, Pizza
 def create_sample_data():
      with app.app_context():
         Pizza.query.delete()
@@ -27,3 +28,8 @@ def create_sample_data():
         db.session.add(restaurant_pizza2)
 
         db.session.commit()
+
+if __name__ == '__main__':
+    create_sample_data()
+        
+    

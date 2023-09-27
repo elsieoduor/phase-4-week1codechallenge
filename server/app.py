@@ -50,25 +50,14 @@ def get_restaurant(id):
     restaurant = Restaurant.query.get(id)
     
     if restaurant:
-        pizza_info = []
-        for pizza in restaurant.pizzas:
-            pizza_info.append({
-                "id": pizza.id,
-                "name": pizza.name,
-                "ingredients": pizza.ingredients
-            })
-        
-        restaurant_info = {
-            "id": restaurant.id,
-            "name": restaurant.name,
-            "address": restaurant.address,
-            "pizzas": pizza_info
-        }
+        print("rrrrrrrrrrrrrrrrrrrrrrrrrr...")
+        print(restaurant.to_dict())
         
         response = make_response(
-            jsonify(restaurant_info),
+            jsonify(restaurant.to_dict()),
             200
         )
+        return response
     else:
         response_dict = {
             "error": "Restaurant not found"
@@ -77,7 +66,7 @@ def get_restaurant(id):
             jsonify(response_dict),
             404
         )
-    return response
+        return response
 
 @app.route('/restaurants/<int:id>', methods=['DELETE'])
 def delete_restaurant(id):
