@@ -19,6 +19,12 @@ class Restaurant(db.Model, SerializerMixin):
 
     # Create a relationship with the 'RestaurantPizza' model, allowing access to related pizza data
     restaurant_pizzas = db.relationship('RestaurantPizza', backref='restaurant')
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'address': self.address,
+        }
 
     def __repr__(self):
         return f'<Restaurant {self.name}, located at {self.address}.'

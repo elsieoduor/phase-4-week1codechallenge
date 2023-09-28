@@ -63,7 +63,7 @@ def get_restaurant(id):
     if restaurant:
         
         response = make_response(
-            jsonify(restaurant.to_dict()),
+            jsonify(restaurant.serialize()),
             200
         )
         return response
@@ -138,6 +138,12 @@ def create_restaurant_pizza():
             400
         )
     return response
+
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
